@@ -1,0 +1,53 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@plugin "@tailwindcss/typography";
+
+@theme {
+  --font-sans: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-display), ui-sans-serif, system-ui, sans-serif;
+  
+  --color-cyan-400: #22d3ee;
+  --color-cyan-500: #06b6d4;
+  --color-slate-950: #020617;
+  --color-slate-900: #0f172a;
+  --color-slate-800: #1e293b;
+}
+
+@layer base {
+  body {
+    @apply bg-slate-950 text-slate-50;
+  }
+}
+
+@layer utilities {
+  .glow-cyan {
+    box-shadow: 0 0 20px -5px rgba(34, 211, 238, 0.3);
+  }
+  
+  .glass {
+    @apply bg-slate-900/40 backdrop-blur-xl border border-white/10;
+  }
+  
+  .glass-hover {
+    @apply hover:bg-slate-900/60 transition-all duration-300;
+  }
+}
+
+/* Prose Invert Customization */
+.prose-invert {
+  --tw-prose-body: theme('colors.slate.300');
+  --tw-prose-headings: theme('colors.white');
+  --tw-prose-links: theme('colors.cyan.400');
+  --tw-prose-bold: theme('colors.white');
+  --tw-prose-counters: theme('colors.slate.400');
+  --tw-prose-bullets: theme('colors.cyan.500');
+  --tw-prose-hr: theme('colors.slate.800');
+  --tw-prose-quotes: theme('colors.slate.100');
+  --tw-prose-quote-borders: theme('colors.cyan.500');
+  --tw-prose-captions: theme('colors.slate.400');
+  --tw-prose-code: theme('colors.white');
+  --tw-prose-pre-code: theme('colors.slate.200');
+  --tw-prose-pre-bg: theme('colors.slate.900');
+  --tw-prose-th-borders: theme('colors.slate.700');
+  --tw-prose-td-borders: theme('colors.slate.800');
+}

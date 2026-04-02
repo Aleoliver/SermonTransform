@@ -1,0 +1,5 @@
+{
+  "name": "SermonTransform AI",
+  "description": "Transforme pregações em estudos bíblicos, devocionais, conteúdo para redes sociais e guias para pequenos grupos.",
+  "requestFramePermissions": ["microphone"]
+}
