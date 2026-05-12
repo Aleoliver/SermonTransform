@@ -14,7 +14,8 @@ import {
   Check, 
   Loader2,
   Mic,
-  Music
+  Music,
+  Quote
 } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
 import { GoogleGenAI } from "@google/genai";
@@ -26,7 +27,7 @@ function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
-type ContentType = 'summary' | 'study' | 'devotional' | 'social' | 'groups';
+type ContentType = 'summary' | 'study' | 'devotional' | 'social' | 'groups' | 'quotes';
 
 interface GeneratedContent {
   summary: string;
@@ -34,6 +35,7 @@ interface GeneratedContent {
   devotional: string;
   social: string;
   groups: string;
+  quotes: string;
 }
 
 export default function SermonTransformApp() {
@@ -111,12 +113,13 @@ export default function SermonTransformApp() {
       }
 
       promptParts.push({ text: `
-        Com base na pregação fornecida, gere 5 tipos de conteúdo estruturados em Markdown.
+        Com base na pregação fornecida, gere 6 tipos de conteúdo estruturados em Markdown.
         Retorne um objeto JSON onde cada valor é uma STRING formatada em Markdown:
         - summary: Uma string Markdown contendo um resumo executivo da pregação (máximo 300 palavras), destacando a tese central e os principais ensinamentos.
         - study: Uma string Markdown contendo um estudo bíblico estruturado com Texto Base, Pontos Principais (com explicações) e Aplicação Prática.
         - devotional: Uma string Markdown contendo uma reflexão curta para cada dia da semana (7 dias), cada um com um versículo chave e uma oração curta.
-        - social: Uma string Markdown contendo 3 opções de legendas para Instagram, 5 frases impactantes (quotes) e uma lista de hashtags relevantes.
+        - social: Uma string Markdown contendo 3 opções de legendas para Instagram e uma lista de hashtags relevantes.
+        - quotes: Uma string Markdown contendo de 7 a 10 frases curtas e de alto impacto extraídas ou inspiradas na pregação, ideais para criar cards e carrosséis nas redes sociais.
         - groups: Uma string Markdown contendo um guia de discussão para pequenos grupos com Quebra-gelo, Perguntas para partilha e Motivos de oração.
 
         IMPORTANTE: Os valores devem ser strings Markdown puras, não objetos ou arrays.
@@ -182,6 +185,7 @@ export default function SermonTransformApp() {
     { id: 'summary', label: 'Resumo', icon: FileText },
     { id: 'study', label: 'Estudo Bíblico', icon: BookOpen },
     { id: 'devotional', label: 'Devocional', icon: Heart },
+    { id: 'quotes', label: 'Frases de Impacto', icon: Quote },
     { id: 'social', label: 'Redes Sociais', icon: Share2 },
     { id: 'groups', label: 'Pequenos Grupos', icon: Users },
   ];
